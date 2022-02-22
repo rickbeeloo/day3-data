@@ -44,7 +44,7 @@ g <-  ggplot(combined, aes(xmin = start , xmax = end, y = groups, fill = groups)
   scale_fill_brewer(palette = "Set3") +
   theme_genes()
 ggsave(g, filename = 'prodigal_comparison.pdf')
-
+print(paste0('Should be saved in ', getwd()))
 
 
 
