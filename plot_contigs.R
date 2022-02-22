@@ -1,8 +1,3 @@
-# Check if we need to install packages
-#list.of.packages <- c("dplyr", "gggenes", "gridExtra")
-#new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
-#if(length(new.packages)) install.packages(new.packages)
-
 # Load the packages
 library(dplyr)
 library(gggenes)
@@ -87,9 +82,9 @@ df <- read.table(file.choose(), sep = '\t', header = T, fill = T, comment.char =
 # Infinite loop to ask user to provide contig identifiers
 while (TRUE) {
   # Ask for user input 
-  contig.id.1 <- readline("First contig id: ")  # 'bin_01||F1M_NODE_1'
-  contig.id.2 <- readline("Second contig id: ") # 'bin_62||F3M_NODE_2' 
-  #out.name    <- readline("Output path (end with.pdf): ")
+  contig.id.1 <- readline("First contig id: ")  
+  contig.id.2 <- readline("Second contig id: ") 
+  out.name    <- readline("Output path (end with.pdf): ")
   
   # Run contigs from dataframe
   contig1 <- get.contig(contig.id.1)
@@ -101,10 +96,13 @@ while (TRUE) {
   lengths <- plot.lengths(contigs)
   annots  <- plot.anno(contigs) 
   
-  # Combine them
-  #pdf(out.name, width = 12, height = 8) 
+  # Actually plot it
   grid.arrange(genes, lengths, annots, layout_matrix = rbind(c(1,1), c(2,3)))
-  #dev.off() 
+  
+  # Also save it just in case of weird symbols again
+  pdf(out.name, width = 12, height = 8) 
+  grid.arrange(genes, lengths, annots, layout_matrix = rbind(c(1,1), c(2,3)))
+  dev.off() 
   
   print('Done!')
   continue = readline("Continue (Y/N): ")
