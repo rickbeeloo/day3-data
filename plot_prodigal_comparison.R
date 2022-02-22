@@ -1,8 +1,6 @@
 library(gggenes)
 library(dplyr)
 
-setwd('C:/Users/Rick/course_output')
-
 # function to parse prodigal annotation file
 parse.prodigal <- function(f) {
   print(f)
