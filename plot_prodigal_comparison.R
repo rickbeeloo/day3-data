@@ -36,6 +36,17 @@ ggplot(combined, aes(xmin = start , xmax = end, y = groups, fill = groups)) +
   scale_fill_brewer(palette = "Set3") +
   theme_genes()
 
+# NOTE: since this old R version does not seem to render the figures
+# properly for some people we will save it to a pdf file that you can open
+g <-  ggplot(combined, aes(xmin = start , xmax = end, y = groups, fill = groups)) +
+  geom_gene_arrow() +
+  facet_wrap(~ groups, scales = "free", ncol = 1) +
+  scale_fill_brewer(palette = "Set3") +
+  theme_genes()
+ggsave(g, filename = 'prodigal_comparison.pdf')
+
+
+
 
 
 
