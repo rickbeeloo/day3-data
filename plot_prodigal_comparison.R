@@ -1,6 +1,7 @@
 library(gggenes)
 library(dplyr)
 library(ggplot2)
+library(ggseqlogo)
 
 # function to parse prodigal annotation file
 parse.prodigal <- function(f) {
