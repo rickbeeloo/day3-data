@@ -103,6 +103,7 @@ while (TRUE) {
   pdf(out.name, width = 12, height = 8) 
   grid.arrange(genes, lengths, annots, layout_matrix = rbind(c(1,1), c(2,3)))
   dev.off() 
+  print(paste0("Plot saved in ", getwd()))
   
   print('Done!')
   continue = readline("Continue (Y/N): ")
